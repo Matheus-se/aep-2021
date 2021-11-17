@@ -10,7 +10,7 @@ class UserCultureSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = UserCultures
-        fields = ['id', 'acummulated_degrees']
+        fields = ['id', 'accumulated_degrees']
 
 class VinculatedUserCultureSerializer(serializers.ModelSerializer):
     
@@ -18,4 +18,4 @@ class VinculatedUserCultureSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = UserCultures
-        fields = ['id', 'acummulated_degrees', 'culture']
+        fields = ['id', 'accumulated_degrees', 'culture']

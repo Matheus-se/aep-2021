@@ -11,4 +11,5 @@ urlpatterns = [
     path('add', views.post_culture_view, name="culture-post"),
     path('list', CultureListView.as_view(), name="culture-list"),
     path('vinculate', views.vinculate_culture_view, name="culture-vinculate"),
+    path('update-degrees/<id>/', views.update_degrees_view, name="culture-update-degrees"),
 ]

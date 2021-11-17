@@ -123,3 +123,30 @@ def vinculate_culture_view(request):
             serializer.save()
             return Response({"message": "culture successfully vinculated"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT', ])
+@permission_classes((IsAuthenticated,))
+def update_degrees_view(request, id):
+
+    try:
+        degrees = request.data['accumulated_degrees']
+    except:
+        return Response({'error': 'degrees is required'}, status=status.HTTP_200_OK)
+        
+    try: 
+        culture = UserCultures.objects.get(id=id)
+    except UserCultures.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    user = request.user
+    
+    data = {'accumulated_degrees': degrees}
+    
+    if request.method == 'PUT':
+        serializer = UserCultureSerializer(culture, data=data, partial=True)
+        data = {}
+        if serializer.is_valid():
+            serializer.save()
+            data['message'] = "accumulated degrees updated"
+            return Response(data=data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

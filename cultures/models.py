@@ -11,9 +11,9 @@ class Culture(models.Model):
         return self.name
     
 class UserCultures(models.Model):
-    acummulated_degrees = models.FloatField(default=0.0, blank=True)
+    accumulated_degrees = models.FloatField(default=0.0, blank=True)
     culture = models.ForeignKey(Culture, models.CASCADE, related_name="culture", blank=True, null=True)
     farmer = models.ForeignKey(Farmer, related_name="cultures", on_delete=models.CASCADE, null=False, blank=False)
     
     def __str__(self):
-        return str(self.acummulated_degrees)
+        return str(self.accumulated_degrees)
