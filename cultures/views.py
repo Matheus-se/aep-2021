@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 from cultures.models import Culture, UserCultures
-from .api.serializer import CultureSerializer, UserCultureSerializer
+from .api.serializer import CultureSerializer, UserCultureSerializer, VinculatedUserCultureSerializer
 
 @api_view(['GET', ])
 @permission_classes(())
@@ -117,7 +117,7 @@ def vinculate_culture_view(request):
     userCulture = UserCultures(farmer=user, culture=culture)
     
     if request.method == 'POST':
-        serializer = UserCultureSerializer(userCulture, data=request.data)
+        serializer = VinculatedUserCultureSerializer(userCulture, data=request.data)
         
         if serializer.is_valid():
             serializer.save()
