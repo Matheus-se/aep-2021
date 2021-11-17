@@ -24,13 +24,16 @@ def get_culture_view(request, id):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class CultureListView(ListAPIView):
-    queryset = Culture.objects.all()
+    queryset = Culture.objects.get_queryset().order_by('id')
     serializer_class = CultureSerializer
     pagination_class = PageNumberPagination
     authentication_classes = ()
     permission_classes = ()
     filter_backends = (SearchFilter, OrderingFilter)
     search_fields = ('name', 'basal_inf', 'basal_sup', 'id', 'thermal_constant')
+    
+    class Meta:
+        ordering = ['-id']
 
 @api_view(['PUT', ])
 @permission_classes((IsAuthenticated,))

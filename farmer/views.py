@@ -37,13 +37,16 @@ def list_farmers_view(request, id):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class FarmerListView(ListAPIView):
-    queryset = Farmer.objects.all()
+    queryset = Farmer.objects.get_queryset().order_by('id')
     serializer_class = FarmerSerializer
     pagination_class = PageNumberPagination
     authentication_classes = ()
     permission_classes = ()
     filter_backends = (SearchFilter, OrderingFilter)
     search_fields = ('username', 'email', 'cpf')
+    
+    class Meta:
+        ordering = ['-id']
 
 @api_view(['POST', ])
 @permission_classes(())
