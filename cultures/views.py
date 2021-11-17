@@ -121,11 +121,7 @@ def vinculate_culture_view(request):
         
         if serializer.is_valid():
             serializer.save()
-            data = {}
-            data['id'] = serializer.data['id']
-            data['accumulated_degrees'] = serializer.data['accumulated_degrees']
-            data['culture'] = culture
-            return Response({"message": "culture successfully vinculated", 'data': data}, status=status.HTTP_200_OK)
+            return Response({"message": "culture successfully vinculated", 'data': serializer.data}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT', ])
