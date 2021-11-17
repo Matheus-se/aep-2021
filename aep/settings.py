@@ -90,17 +90,18 @@ WSGI_APPLICATION = 'aep.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'd7cb2bf8sffl4j',
-    #     'USER': 'jeyaadteqdboqp',
-    #     'PASSWORD': '6e0f523d5523e2b4e28ecffaadacc69485916d5ab71d2bf2ac7d76e07e1b9e66',
-    #     'HOST': 'ec2-54-146-82-179.compute-1.amazonaws.com',
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dicbf5b82l4o8',
+        'USER': 'lolngqsoeezmwx',
+        'PASSWORD': 'fef178d8128cb63486fcb153b62390f7fa23803cd6b908330eb89a894706b2f0',
+        'HOST': 'ec2-3-225-30-189.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
 }
 
 
