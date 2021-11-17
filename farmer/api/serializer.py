@@ -19,7 +19,7 @@ class FarmerSerializer(serializers.ModelSerializer):
         user = Farmer(
             email=validated_data['email'],
             username=validated_data['username'],
-            cpf=validated_data['cnpj'],
+            cpf=validated_data['cpf'],
         )
         user.set_password(validated_data['password'])
         user.save()
