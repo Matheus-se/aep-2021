@@ -117,10 +117,11 @@ def vinculate_culture_view(request):
     userCulture = UserCultures(farmer=user, culture=culture)
     
     if request.method == 'POST':
-        serializer = VinculatedUserCultureSerializer(userCulture, data=request.data)
+        serializer = UserCultureSerializer(userCulture, data=request.data)
         
         if serializer.is_valid():
             serializer.save()
+            serializer.data['culture'] = culture
             return Response({"message": "culture successfully vinculated", 'data': serializer.data}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
