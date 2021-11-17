@@ -128,6 +128,7 @@ def vinculate_culture_view(request):
 @permission_classes((IsAuthenticated,))
 def update_degrees_view(request, id):
 
+    
     try:
         degrees = request.data['accumulated_degrees']
     except:
@@ -139,6 +140,8 @@ def update_degrees_view(request, id):
         return Response(status=status.HTTP_404_NOT_FOUND)
     
     user = request.user
+    if culture.farmer != user:
+        return Response({'error': "You don't have permission to update this user culture"}) 
     
     data = {'accumulated_degrees': degrees}
     

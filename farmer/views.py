@@ -95,7 +95,7 @@ def delete_farmer_view(request):
         deleted = farmer.delete(); 
         data = {}
         if deleted:
-            data['message'] = "vendor deleted"
+            data['message'] = "farmer deleted"
             return Response(data=data, status=status.HTTP_200_OK)
         data['error'] = "Delete failed"
         return Response(status=status.HTTP_400_BAD_REQUEST)
