@@ -1,1 +1,1 @@
-web: gunicorn apiRest.wsgi
+web: gunicorn aep.wsgi
